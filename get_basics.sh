@@ -11,14 +11,16 @@
 ###
 
 ### to verify your gpu is cuda enable check
-lspci | grep -i nvidia
+#lspci | grep -i nvidia
 
 ### If you have previous installation remove it first. 
-sudo apt purge nvidia* -y
-sudo apt remove nvidia-* -y
-sudo rm /etc/apt/sources.list.d/cuda*
-sudo apt autoremove -y && sudo apt autoclean -y
-sudo rm -rf /usr/local/cuda*
+#sudo apt purge nvidia* -y
+#sudo apt remove nvidia-* -y
+#sudo rm /etc/apt/sources.list.d/cuda*
+#sudo apt autoremove -y && sudo apt autoclean -y
+#sudo rm -rf /usr/local/cuda*
+
+#install nvdia driver automaticly it will 
 
 # system update
 sudo apt update && sudo apt upgrade -y
@@ -26,6 +28,13 @@ sudo apt update && sudo apt upgrade -y
 
 # install other import packages
 sudo apt install g++ freeglut3-dev build-essential libx11-dev libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+
+#some system setting 
+
+sudo gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+sudo apt install ubuntu-restricted-extras
+sudo apt install git
+sudo apt install -y gnome-tweaks
 
 #gcc version downgrade to 9
 sudo apt -y install  gcc-9 g++-9
@@ -36,14 +45,14 @@ sudo update-alternatives --config g++
 
 
 # first get the PPA repository driver
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
+#sudo add-apt-repository ppa:graphics-drivers/ppa
+#sudo apt update
 
 # find recommended driver versions for you
-ubuntu-drivers devices
+# ubuntu-drivers devices
 
 # install nvidia driver with dependencies
-sudo apt install nvidia-driver-535 nvidia-dkms-535 -y
+#sudo apt install nvidia-driver-535 nvidia-dkms-535 -y
 
 # reboot
 sudo reboot now
@@ -66,6 +75,7 @@ snap install teams-for-linux
 
 # get cuda proceed
 wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.runsudo sh cuda_11.8.0_520.61.05_linux.run
+
 sudo sh cuda_11.8.0_520.61.05_linux.run
 
 
@@ -74,6 +84,7 @@ echo 'export PATH=/usr/local/cuda-11.8/bin:$PATH' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
 source ~/.bashrc
 sudo ldconfig
+
 
 # install cuDNN v11.8
 # First register here: https://developer.nvidia.com/developer-program/signup
@@ -97,6 +108,7 @@ sudo apt-get install python3-pip
 
 #install cmake 
 pip install cmake
+
 
 # install Pytorch (an open source machine learning framework)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
